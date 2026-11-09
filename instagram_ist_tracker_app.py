@@ -375,6 +375,14 @@ def run_streamlit_dashboard() -> None:
     )
 
     with st.sidebar:
+        st.markdown("### 🌓 Appearance")
+        is_dark = st.toggle(
+            "Dark Mode",
+            value=True,
+            help="Toggle between Dark Mode and Light Mode",
+        )
+        st.divider()
+
         st.header("⚙️ Extraction Settings")
         only_reels = st.checkbox("Fetch Reels / Videos Only", value=False)
         limit_toggle = st.checkbox("Fetch All Posts (No Limit)", value=True)
@@ -404,6 +412,111 @@ def run_streamlit_dashboard() -> None:
         session_file = (
             st.text_input("Custom Session File Path (Optional)", value="").strip()
             or None
+        )
+
+    if is_dark:
+        st.markdown(
+            """
+            <style>
+                /* Dark Mode Styling */
+                .stApp {
+                    background-color: #0B0F19;
+                    color: #F3F4F6;
+                }
+                [data-testid="stSidebar"] {
+                    background-color: #111827 !important;
+                    border-right: 1px solid #1F2937 !important;
+                }
+                [data-testid="stSidebar"] * {
+                    color: #E5E7EB;
+                }
+                [data-testid="stMetric"] {
+                    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 12px;
+                    padding: 16px 20px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+                }
+                [data-testid="stMetricLabel"] {
+                    color: #94A3B8 !important;
+                    font-size: 0.88rem !important;
+                    font-weight: 500 !important;
+                }
+                [data-testid="stMetricValue"] {
+                    color: #38BDF8 !important;
+                    font-weight: 700 !important;
+                }
+                .stTextInput input {
+                    background-color: #1E293B !important;
+                    color: #F8FAFC !important;
+                    border: 1px solid #334155 !important;
+                    border-radius: 8px !important;
+                }
+                .stTextInput input:focus {
+                    border-color: #38BDF8 !important;
+                    box-shadow: 0 0 0 1px #38BDF8 !important;
+                }
+                div[data-testid="stExpander"] {
+                    background-color: #1E293B !important;
+                    border: 1px solid #334155 !important;
+                    border-radius: 10px !important;
+                }
+                hr {
+                    border-color: #1F2937 !important;
+                }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            """
+            <style>
+                /* Light Mode Styling */
+                .stApp {
+                    background-color: #FFFFFF;
+                    color: #1E293B;
+                }
+                [data-testid="stSidebar"] {
+                    background-color: #F8FAFC !important;
+                    border-right: 1px solid #E2E8F0 !important;
+                }
+                [data-testid="stSidebar"] * {
+                    color: #1E293B;
+                }
+                [data-testid="stMetric"] {
+                    background: #F8FAFC;
+                    border: 1px solid #E2E8F0;
+                    border-radius: 12px;
+                    padding: 16px 20px;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                }
+                [data-testid="stMetricLabel"] {
+                    color: #64748B !important;
+                    font-size: 0.88rem !important;
+                    font-weight: 500 !important;
+                }
+                [data-testid="stMetricValue"] {
+                    color: #0F172A !important;
+                    font-weight: 700 !important;
+                }
+                .stTextInput input {
+                    background-color: #FFFFFF !important;
+                    color: #0F172A !important;
+                    border: 1px solid #CBD5E1 !important;
+                    border-radius: 8px !important;
+                }
+                div[data-testid="stExpander"] {
+                    background-color: #FFFFFF !important;
+                    border: 1px solid #E2E8F0 !important;
+                    border-radius: 10px !important;
+                }
+                hr {
+                    border-color: #E2E8F0 !important;
+                }
+            </style>
+            """,
+            unsafe_allow_html=True,
         )
 
     col_input, col_btn = st.columns([4, 1])

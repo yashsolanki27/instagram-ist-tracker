@@ -3,10 +3,12 @@ headless = true
 port = 8501
 enableCORS = false
 enableXsrfProtection = false
+runOnSave = true
 
 [theme]
-primaryColor = "#2563EB"
-backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F8FAFC"
-textColor = "#1E293B"
+base = "dark"
+primaryColor = "#38BDF8"
+backgroundColor = "#0B0F19"
+secondaryBackgroundColor = "#111827"
+textColor = "#F3F4F6"
 font = "sans serif"
