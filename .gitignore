@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Generated Data / Export files
+*.xlsx
+*.csv
+session-*
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
